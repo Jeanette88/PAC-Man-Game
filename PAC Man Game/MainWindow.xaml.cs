@@ -230,11 +230,15 @@ namespace PAC_Man_Game
                         Canvas.SetLeft(x, Canvas.GetLeft(x) + ghostSpeed);
                     }
 
+                    // reduce one from the current ghost step integer
                     currentGhostStep--;
 
+                    // if the current ghost step integer goes below 1 
                     if (currentGhostStep < 1)
                     {
+                        // reset the current ghost step to the ghost move step value
                         currentGhostStep = ghostMoveStep;
+                        // reverse the ghost speed integer
                         ghostSpeed = -ghostSpeed;
                     }
                 }
