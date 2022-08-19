@@ -41,13 +41,51 @@ namespace PAC_Man_Game
             InitializeComponent();
 
             GameSetUp();
-
-
         }
 
-        private void CanvasKeyDown(object sender, KeyEventArgs e)
+        private void CanvasKeyDown(object sender, KeyEventArgs e)  
         {
-           
+            // Rules on how Pac man can move in the Game
+
+            if (e.Key == Key.Left && noLeft == false)
+            {
+                goRight = goUp = goDown = false; 
+                noRight = noUp = noDown = false;
+
+                goLeft = true; 
+
+                pacman.RenderTransform = new RotateTransform(-180, pacman.Width / 2, pacman.Height / 2); //Pac man face left
+            }
+
+            if (e.Key == Key.Right && noRight == false) 
+            {
+                noLeft = noUp = noDown = false; 
+                goLeft = goUp = goDown = false;
+
+                goRight = true;
+
+                pacman.RenderTransform = new RotateTransform(0, pacman.Width / 2, pacman.Height / 2); // Pac man face right
+            }
+
+            if (e.Key == Key.Up && noUp == false)
+            {
+                noRight = noDown = noLeft = false;
+                goRight = goDown = goLeft = false; 
+
+                goUp = true;
+
+                pacman.RenderTransform = new RotateTransform(-90, pacman.Width / 2, pacman.Height / 2); // Pac man face up
+            }
+
+            if (e.Key == Key.Down && noDown == false)
+            {
+                noUp = noLeft = noRight = false; 
+                goUp = goLeft = goRight = false;
+
+                goDown = true;
+
+                pacman.RenderTransform = new RotateTransform(90, pacman.Width / 2, pacman.Height / 2); // Pac man face down
+            }
         }
 
         private void GameSetUp()
