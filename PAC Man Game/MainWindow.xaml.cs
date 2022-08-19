@@ -39,7 +39,10 @@ namespace PAC_Man_Game
         public MainWindow()
         {
             InitializeComponent();
-           
+
+            GameSetUp();
+
+
         }
 
         private void CanvasKeyDown(object sender, KeyEventArgs e)
@@ -49,7 +52,35 @@ namespace PAC_Man_Game
 
         private void GameSetUp()
         {
-            
+            MyCanvas.Focus(); 
+
+            gameTimer.Tick += GameLoop; // link the game loop event to the time tick
+            gameTimer.Interval = TimeSpan.FromMilliseconds(20); // set time to tick every 20 milliseconds
+            gameTimer.Start(); // start the time
+            currentGhostStep = ghostMoveStep; // set current ghost step to the ghost move step
+
+
+            ImageBrush pacmanImage = new ImageBrush();
+            pacmanImage.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/pacman.jpg"));
+            pacman.Fill = pacmanImage;
+
+            ImageBrush redGhost = new ImageBrush();
+            redGhost.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/red.jpg"));
+            redGuy.Fill = redGhost;
+
+            ImageBrush orangeGhost = new ImageBrush();
+            orangeGhost.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/orange.jpg"));
+            orangeGuy.Fill = orangeGhost;
+
+            ImageBrush pinkGhost = new ImageBrush();
+            pinkGhost.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/pink.jpg"));
+            pinkGuy.Fill = pinkGhost;
+
+        }
+
+        private void GameLoop(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void GameOver()
