@@ -80,12 +80,17 @@ namespace PAC_Man_Game
 
         private void GameLoop(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+           
         }
 
-        private void GameOver()
+        private void GameOver(string message)
         {
+            gameTimer.Stop(); // stop the game timer
+            MessageBox.Show(message, "The Pac Man Game - GAME OVER!"); // show a message box with the message Game over.
 
+            // when the player clicks ok on the message box - restart the application
+            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            Application.Current.Shutdown();
         }
 
 
