@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PAC_Man_Game"
         mc:Ignorable="d"
         Title="PAC Man Game" Height="600" Width="800">
-    <Canvas Name="MyCanvas" KeyDown="CanvasKeyDOwn" Focusable="True" Background="Black">
+    <Canvas Name="MyCanvas" KeyDown="CanvasKeyDown" Focusable="True" Background="Black">
 
         <Label FontSize="20" Name="txtScore" Foreground="White" Content="Score: 0" />
 
