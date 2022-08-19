@@ -243,6 +243,12 @@ namespace PAC_Man_Game
                     }
                 }
             }
+
+            // if the player collected 85 coins in the game
+            if (score == 85)
+            {
+                GameOver("You Win, you collected all of the coins");
+            }
         }
 
         private void GameOver(string message)
