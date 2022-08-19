@@ -201,6 +201,16 @@ namespace PAC_Man_Game
                         goUp = false;
                     }
                 }
+
+                // Pac man takes the coins - the coins disappear and become points
+                if ((string)x.Tag == "coin")
+                {
+                    if (pacmanHitBox.IntersectsWith(hitBox) && x.Visibility == Visibility.Visible)
+                    {
+                        x.Visibility = Visibility.Hidden;
+                        score++;
+                    }
+                }
             }
         }
 
