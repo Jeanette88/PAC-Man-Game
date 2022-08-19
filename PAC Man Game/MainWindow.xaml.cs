@@ -211,6 +211,33 @@ namespace PAC_Man_Game
                         score++;
                     }
                 }
+
+                if ((string)x.Tag == "ghost")
+                {
+                    // The ghost takes Pac man. The Game is over and gets a message
+                    if (pacmanHitBox.IntersectsWith(hitBox))
+                    {
+                        GameOver("Ghosts got you, click ok to play again");
+                    }
+
+                    // How the ghosts move
+                    if (x.Name.ToString() == "orangeGuy")
+                    {
+                        Canvas.SetLeft(x, Canvas.GetLeft(x) - ghostSpeed);
+                    }
+                    else
+                    {
+                        Canvas.SetLeft(x, Canvas.GetLeft(x) + ghostSpeed);
+                    }
+
+                    currentGhostStep--;
+
+                    if (currentGhostStep < 1)
+                    {
+                        currentGhostStep = ghostMoveStep;
+                        ghostSpeed = -ghostSpeed;
+                    }
+                }
             }
         }
 
