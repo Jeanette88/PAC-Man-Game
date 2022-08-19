@@ -118,7 +118,53 @@ namespace PAC_Man_Game
 
         private void GameLoop(object sender, EventArgs e)
         {
-           
+            // this is the game loop event, this event will control all of the movements, outcome, collision and score for the game
+
+            txtScore.Content = "Score: " + score; // show the score
+
+            // Rules on how fast Pac man can go
+
+            if (goRight)
+            {
+                Canvas.SetLeft(pacman, Canvas.GetLeft(pacman) + speed);
+            }
+            if (goLeft)
+            {
+                Canvas.SetLeft(pacman, Canvas.GetLeft(pacman) - speed);
+            }
+            if (goUp)
+            {
+                Canvas.SetTop(pacman, Canvas.GetTop(pacman) - speed);
+            }
+            if (goDown)
+            {
+                Canvas.SetTop(pacman, Canvas.GetTop(pacman) + speed);
+            }
+
+
+            if (goDown && Canvas.GetTop(pacman) + 80 > Application.Current.MainWindow.Height) // Rules on where Pac man can go within the Canvas
+            {
+                noDown = true;
+                goDown = false;
+            }
+            if (goUp && Canvas.GetTop(pacman) < 1)
+            {
+                noUp = true;
+                goUp = false;
+            }
+            if (goLeft && Canvas.GetLeft(pacman) - 10 < 1)
+            {
+                noLeft = true;
+                goLeft = false;
+            }
+            if (goRight && Canvas.GetLeft(pacman) + 70 > Application.Current.MainWindow.Width)
+            {
+                noRight = true;
+                goRight = false;
+            }
+
+            pacmanHitBox = new Rect(Canvas.GetLeft(pacman), Canvas.GetTop(pacman), pacman.Width, pacman.Height); // Updates where Pac man are on Canvasen            
+            
         }
 
         private void GameOver(string message)
